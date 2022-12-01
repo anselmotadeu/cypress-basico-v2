@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
     // o comando acima, faz referência aos comandos do Cypress e intelligence ao passar o mouse em cima do comando
 
-describe ('Central de Atendimento ao Cliente TAT', function() {
+describe ('Central de Atendimento ao Cliente', function() {
     beforeEach(function() {
         cy.visit('cypress-basico-v2/src/index.html')
             // o comando acima acessa um site em questão e neste caso, estou acessando um site local.
