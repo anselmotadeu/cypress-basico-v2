@@ -2,10 +2,11 @@
     // o comando acima, faz referência aos comandos do Cypress e intelligence ao passar o mouse em cima do comando
 
 describe ('Central de Atendimento ao Cliente', function() {
+    const THREE_SECOND_IN_MS = 3000
+
     beforeEach(function() {
         cy.visit('cypress-basico-v2/src/index.html')
             // o comando acima acessa um site em questão e neste caso, estou acessando um site local.
-
     })
     it('verifica o título da aplicação', function() {
 
@@ -15,6 +16,8 @@ describe ('Central de Atendimento ao Cliente', function() {
     })
 
     it('preenchimento de formulário', function() {
+
+        cy.clock()
 
         cy.get('#firstName')
             .click()
@@ -54,9 +57,14 @@ describe ('Central de Atendimento ao Cliente', function() {
 
         cy.contains('.button', 'Enviar')
             .click()
-        // cy.contains('span', 'Mensagem enviada com sucesso')
+        // cy.contains('span', 'Mensagem enviada com sucesso.')
         cy.get('.success')
             .should('be.visible');
+
+            cy.tick(THREE_SECOND_IN_MS)
+
+            cy.get('.success')
+                .should('not.be.visible');
 
         })
 
@@ -268,5 +276,69 @@ it('seleciona um arquivo simulando um drag-and-drop', function() {
         cy.contains('Penseapp').should('be.visible')
         
     })
+
+    it('exibe e esconde as mensagens de sucesso e erro usando o .invoke', function() {
+        cy.get('.success')
+            // o comando acima puxa o que tem "success"
+          .should('not.be.visible')
+            // o comando acima verifica que não está visível
+          .invoke('show')
+            // o comando acima força o aparecimento do "success" pesquisado
+          .should('be.visible')
+            // o comando acima verifica que agora está visível
+          .and('contain', 'Mensagem enviada com sucesso.')
+            // o comando acima complementa informando a mensagem que deveria aparecer
+          .invoke('hide')
+            // o comando acima esconde novamente o elemento buscado
+          .should('not.be.visible')
+            // o comando acima garante que o elemento não está mais visível
+        cy.get('.error')
+            // o comando acima puxa o que tem "error"
+          .should('not.be.visible')
+            // o comando acima verifica que não está visível
+          .invoke('show')
+            // o comando acima força o aparecimento do "error" pesquisado
+          .should('be.visible')
+            // o comando acima verifica que agora está visível
+          .and('contain', 'Valide os campos obrigatórios!')
+            // o comando acima complementa informando a mensagem que deveria aparecer
+          .invoke('hide')
+             // o comando acima esconde novamente o elemento buscado
+          .should('not.be.visible')
+            // o comando acima garante que o elemento não está mais visível
+      })
+
+      it('preenche a area de texto usando o comando invoke', function() {
+            const longText1 = Cypress._.repeat('0123456789', 20)
+
+            cy.get('#open-text-area')
+                .invoke('val', longText1)
+                    .should('have.value', longText1)
+
+      })
+
+      it('faz uma requisição HTTP', function() {
+
+        cy.request('https://cac-tat.s3.eu-central-1.amazonaws.com/index.html')
+            .should(function (response) {
+                const { status, statusText, body } = response
+                expect(status).to.equal(200)
+                expect(statusText).to.equal('OK')
+                expect(body).to.include('CAC TAT')
+                
+            })
+
+      })
+
+        it('encontra o gato escondido', function() {
+
+            cy.get('#cat')
+                .invoke('show')
+                    .should('be.visible')
+            cy.get('#title')
+                .invoke('text', 'PenseAPPP')
+            cy.get('#subtitle')
+                .invoke('text', 'Agora eu estou brabissímo com o Cypress')
+        })
 
     })
