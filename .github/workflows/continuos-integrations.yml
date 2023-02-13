@@ -1,0 +1,16 @@
+name: End-to-End Testes
+
+on: [push]
+
+jobs: 
+  cypress-electon-tests:
+    runs-on: ubunto-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3.3.0
+        
+      - name: install dependencies
+        run: npm install
+        
+      - name: Run E2E tests
+        run: npx cypress run
