@@ -3,7 +3,7 @@
 
 <h1 align="center">
   <br>
-  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.png" alt="Markdownify" width="200"></a>
+  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="[https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.png](https://www.google.com.br/url?sa=i&url=https%3A%2F%2Ftwitter.com%2FCypress_io&psig=AOvVaw2HF-0CqNRSUQNW8MXS4VFj&ust=1676544040772000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCNDknrSrl_0CFQAAAAAdAAAAABAY)" alt="Markdownify" width="200"></a>
   <br>
   Markdownify
   <br>
