@@ -31,6 +31,6 @@ Deixo aqui, o perfil do Professor, a qual indico muito:
 
 ## Requirements
 
-- [Node 18](https://nodejs.org/en/)
+- [Node 16](https://nodejs.org/en/)
 - [VS Code](https://code.visualstudio.com/download)
 - [Cypress](cypress.io)

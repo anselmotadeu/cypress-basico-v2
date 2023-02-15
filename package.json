@@ -1,5 +1,5 @@
 {
-  "name": "learning_cypress_udemy",
+  "name": "learning_cypress",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,9 +9,10 @@
     "test": "cypress run"
   },
   "keywords": [],
-  "author": "",
+  "author": "Anselmo Santos",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
+    "cypress": "^12.5.1",
     "node": "^16.18.1"
   }
 }
