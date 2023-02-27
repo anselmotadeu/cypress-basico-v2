@@ -1,6 +1,7 @@
 name: End-to-End Testes
 
-on: [push]
+on:
+  workflow_dispatch:
 
 jobs: 
   cypress-electon-tests:
